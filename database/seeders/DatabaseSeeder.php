@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             LeadSeeder::class,
             TagSeeder::class,
             PipelineStagesSeeder::class,
+            CustomFieldSeeder::class,
         ]);
 
         $defaultPipelineStage = PipelineStage::where('is_default', true)->first()->id;
