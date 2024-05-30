@@ -21,7 +21,7 @@ class LeadSourcePolicy
      */
     public function view(User $user, LeadSource $leadSource): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -29,7 +29,7 @@ class LeadSourcePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -37,7 +37,7 @@ class LeadSourcePolicy
      */
     public function update(User $user, LeadSource $leadSource): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -45,7 +45,7 @@ class LeadSourcePolicy
      */
     public function delete(User $user, LeadSource $leadSource): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -53,7 +53,7 @@ class LeadSourcePolicy
      */
     public function restore(User $user, LeadSource $leadSource): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -61,6 +61,6 @@ class LeadSourcePolicy
      */
     public function forceDelete(User $user, LeadSource $leadSource): bool
     {
-        //
+        return $user->isAdmin();
     }
 }

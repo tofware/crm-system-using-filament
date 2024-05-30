@@ -21,7 +21,7 @@ class CustomFieldPolicy
      */
     public function view(User $user, CustomField $customField): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -29,7 +29,7 @@ class CustomFieldPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -37,7 +37,7 @@ class CustomFieldPolicy
      */
     public function update(User $user, CustomField $customField): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -45,7 +45,7 @@ class CustomFieldPolicy
      */
     public function delete(User $user, CustomField $customField): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -53,7 +53,7 @@ class CustomFieldPolicy
      */
     public function restore(User $user, CustomField $customField): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -61,6 +61,6 @@ class CustomFieldPolicy
      */
     public function forceDelete(User $user, CustomField $customField): bool
     {
-        //
+        return $user->isAdmin();
     }
 }

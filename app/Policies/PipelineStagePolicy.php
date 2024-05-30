@@ -21,7 +21,7 @@ class PipelineStagePolicy
      */
     public function view(User $user, PipelineStage $pipelineStage): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -29,7 +29,7 @@ class PipelineStagePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -37,7 +37,7 @@ class PipelineStagePolicy
      */
     public function update(User $user, PipelineStage $pipelineStage): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -45,7 +45,7 @@ class PipelineStagePolicy
      */
     public function delete(User $user, PipelineStage $pipelineStage): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -53,7 +53,7 @@ class PipelineStagePolicy
      */
     public function restore(User $user, PipelineStage $pipelineStage): bool
     {
-        //
+        return $user->isAdmin();
     }
 
     /**
@@ -61,6 +61,6 @@ class PipelineStagePolicy
      */
     public function forceDelete(User $user, PipelineStage $pipelineStage): bool
     {
-        //
+        return $user->isAdmin();
     }
 }

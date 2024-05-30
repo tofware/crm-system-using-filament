@@ -25,15 +25,13 @@ use Filament\Resources\Resource;
 use Filament\Support\Colors\Color;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
 
 class CustomerResource extends Resource
 {
     protected static ?string $model = Customer::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {
@@ -42,6 +40,7 @@ class CustomerResource extends Resource
                 Forms\Components\Section::make('Employee Information')
                     ->schema([
                         Forms\Components\Select::make('employee_id')
+                            ->label('Employee')
                             ->options(User::where('role_id', Role::where('name', 'Employee')->first()->id)->pluck('name', 'id'))
                     ])
                     ->hidden(!auth()->user()->isAdmin()),
