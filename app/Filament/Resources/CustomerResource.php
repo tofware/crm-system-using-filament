@@ -7,6 +7,8 @@ use App\Filament\Resources\CustomerResource\RelationManagers;
 use App\Models\Customer;
 use App\Models\CustomField;
 use App\Models\PipelineStage;
+use App\Models\Role;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -34,6 +36,12 @@ class CustomerResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Section::make('Employee Information')
+                    ->schema([
+                        Forms\Components\Select::make('employee_id')
+                            ->options(User::where('role_id', Role::where('name', 'Employee')->first()->id)->pluck('name', 'id'))
+                    ])
+                    ->hidden(!auth()->user()->isAdmin()),
                 Forms\Components\Section::make('Customer Details')
                     ->schema([
                         Forms\Components\TextInput::make('first_name')
@@ -113,6 +121,8 @@ class CustomerResource extends Resource
                 return $query->with('tags');
             })
             ->columns([
+                Tables\Columns\TextColumn::make('employee.name')
+                    ->hidden(!auth()->user()->isAdmin()),
                 Tables\Columns\TextColumn::make('first_name')
                     ->label('Name')
                     ->formatStateUsing(function ($record) {
